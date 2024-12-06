@@ -8,8 +8,8 @@
 	<style>
 body {
 	background-color: #111;
-	color: #ccffcc;
-	font-family: monospace;
+	color: white;
+	font-family: sans-serif;
 	font-size: 14pt;
 }
 
@@ -18,9 +18,13 @@ a {
 	text-decoration: none;
 }
 
+pre, code {
+	color: #ccffcc;
+}
+
 .container {
 	margin: auto;
-	max-width: 600px;
+	max-width: 960px;
 }
 	</style>
 </head>
@@ -28,9 +32,19 @@ a {
 	<div class="container">
 		<h1>Principia Arch Repository</h1>
 
-		<p>Custom repository hosting binary packages of Principia. Currently contains x86_64 binary packages <strong>principia</strong> for the latest stable version and <strong>principia-git</strong> which gets updated every now and then from the master branch.</p>
+		<p>Custom repository hosting binary packages of Principia. Currently contains x86_64 binary packages <code>principia</code> for the latest stable version and <code>principia-git</code> which gets updated every now and then from the master branch.</p>
+		
+		<p>To enable it, paste the following in <code>/etc/pacman.conf</code>:</p>
+		
+		<pre>[principia]
+SigLevel = Optional DatabaseOptional
+Server = https://arch.principia-web.se/$arch/</pre>
 
-		<p><strong>See <a href="https://principia-web.se/download">the principia-web download page</a> for instructions to add the repository.</strong></p>
+		<p>Or run the following oneliner to append it to the file:</p>
+		
+		<code>echo -e '\n[principia]\nSigLevel = Optional DatabaseOptional\nServer = https://arch.principia-web.se/$arch' | sudo tee -a /etc/pacman.conf</code>
+		
+		<p>Also see <a href="https://principia-web.se/download#archlinux">the Arch section of the Principia download page</a>.</p>
 	</div>
 </body>
 </html>
